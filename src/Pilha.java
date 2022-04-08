@@ -116,6 +116,14 @@ class FilaCircular {
         return inseriou;
     }
 
+    public int[] getDados() {
+        return dados;
+    }
+
+    public int getTamanho() {
+        return tamanho;
+    }
+
     public int remover() {
         int v = -1;
         if (!estaVazia()) {
@@ -166,8 +174,17 @@ class API {
         // Deve retornar uma terceira FilaCircular R, onde R
         // contem o merge de A e B.
 
-        FilaCircular R = FilaCircular.cria_fila( 1 ); // acertar tamanho
+        FilaCircular R = FilaCircular.cria_fila( A.getTamanho() + B.getTamanho() ); // acertar tamanho
         // coloque o código necessário para fazer o merge de A e B.
+        R.getDados();
+        for (int i = 0; i<=A.getTamanho() - 1;i++){
+            int n = A.getDados()[i];
+            R.inserir(n);
+        }
+        for (int i = 0; i<=B.getTamanho() - 1;i++){
+            int n = B.getDados()[i];
+            R.inserir(n);
+        }
 
         return R;
     }
@@ -178,8 +195,12 @@ class API {
         // Deve retornar uma segunda FilaCircular R
         // contendo os elementos de A em ordem inversa.
 
-        FilaCircular R = FilaCircular.cria_fila( 1 ); // acertar tamanho
+        FilaCircular R = FilaCircular.cria_fila(A.getTamanho()); // acertar tamanho
         // coloque o código necessário para fazer a copia de A.
+        for( int i = A.getDados().length -1; i>=0;i--){
+            int n = A.getDados()[i];
+            R.inserir(n);
+        }
 
         return R;
     }
@@ -214,18 +235,29 @@ class API {
         API api = new API();
 
         // Questão 02 - chamadas parcialmente dadas
-        FilaCircular A1 = new FilaCircular( 1 );
-        FilaCircular B1 = new FilaCircular( 1 );
+        FilaCircular A1 = new FilaCircular( 2 );
+        FilaCircular B1 = new FilaCircular( 3 );
+        A1.inserir(1);
+        A1.inserir(2);
+        B1.inserir(3);
+        B1.inserir(4);
+        B1.inserir(5);
         FilaCircular R1 = api.merge(A1, B1);
-        //A1.imprimir();
-        //B1.imprimir();
-        //R1.imprimir();
+        A1.imprimir();
+        B1.imprimir();
+        R1.imprimir();
 
         // Questão 03 - chamadas parcialmente dadas
-        FilaCircular A2 = new FilaCircular( 1 );
-        FilaCircular R2 = api.inverteFila(A2);
+        FilaCircular A2 = new FilaCircular( 3 );
         //A2.imprimir();
         //R2.imprimir();
+        A2.inserir(1);
+        A2.inserir(2);
+        A2.inserir(3);
+        A2.imprimir();
+
+        FilaCircular R2 = api.inverteFila(A2);
+        R2.imprimir();
 
         // Questão 04 - chamadas parcialmente dadas
         Pilha A3 = new Pilha( 5 );
