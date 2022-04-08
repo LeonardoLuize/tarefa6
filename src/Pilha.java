@@ -221,11 +221,29 @@ class API {
     // questão 5.
     public boolean avaliaExpressao(String exp){
 
-        boolean verdadeira = false;
-        // coloque o código necessário
-        // para avaliar expressões
+        char abre[] =  {'(', '[', '{'};
+        char fecha[] = {')', ']', '}'};
 
-        return verdadeira;
+        Pilha P = new Pilha(exp.length());
+
+        for (char c_atual: exp.toCharArray()) {
+
+            for(int j = 0; j <3; j++) {
+                if (c_atual == abre[j] ){P.empilha(fecha[j]);}
+                if (c_atual == fecha[j] ){
+                    if (c_atual == P.topo()) {
+                        P.desempilha();
+                    }else{
+                        return false;
+                    }
+                }
+
+            }
+
+
+        }
+
+        return P.topo() == -1;
     }
 
     public static void main(String [] args){
@@ -274,10 +292,12 @@ class API {
         R3.imprimir();
 
         // Questão 05 - chamadas parcialmente dadas
-        String expressao = "";
+        System.out.println("\nEx 5:");
+
+        String expressao = "[{A*B} + N]+(A+B)";
         boolean R4 = api.avaliaExpressao(expressao);
-        //System.out.println("Expressao: " + expressao);
-        //System.out.println("Correta: " + R4);
+        System.out.println("Expressao: " + expressao);
+        System.out.println("Correta: " + R4);
 
     }
 }
