@@ -235,6 +235,7 @@ class API {
         API api = new API();
 
         // Questão 02 - chamadas parcialmente dadas
+        System.out.println("Ex 2:");
         FilaCircular A1 = new FilaCircular( 2 );
         FilaCircular B1 = new FilaCircular( 3 );
         A1.inserir(1);
@@ -248,6 +249,7 @@ class API {
         R1.imprimir();
 
         // Questão 03 - chamadas parcialmente dadas
+        System.out.println("\nEx 3:");
         FilaCircular A2 = new FilaCircular( 3 );
         //A2.imprimir();
         //R2.imprimir();
@@ -260,6 +262,7 @@ class API {
         R2.imprimir();
 
         // Questão 04 - chamadas parcialmente dadas
+        System.out.println("\nEx 4:");
         Pilha A3 = new Pilha( 5 );
         A3.empilha(2);
         A3.empilha(4);
